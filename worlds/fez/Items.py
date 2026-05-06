@@ -67,5 +67,8 @@ item_name_groups = {
     "Progression":  {item.name for item in progression_items},
     "Skippable":    {item.name for item in skippable_items},
     "Trap":         {item.name for item in trap_items},
-    "Filer":        {item.name for item in filler_items},
+    "Filler":       {item.name for item in filler_items},
+    "Cubes":        {"Golden Cube", "Anti-Cube"},
+    "Doors":        {item.name for item in all_item_data if 'Door Unlocked' in item.name},
+    "Maps":         {item.name for item in all_item_data if 'Map' in item.name},
 }
