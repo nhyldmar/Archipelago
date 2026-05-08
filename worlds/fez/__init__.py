@@ -112,7 +112,7 @@ class FezWorld(World):
                     
 
         # Add filler
-        fill_size = len(self.location_name_to_id) - len(self.multiworld.itempool)
+        fill_size = len(self.location_name_to_id) - sum(item.count for item in main_items)
         self.add_filler_items(fill_size)
 
     def set_rules(self) -> None:
