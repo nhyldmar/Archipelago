@@ -50,6 +50,7 @@ skippable_items: List[FezItemData] = [
     FezItemData("The Counting Cube",    1,  ItemClassification.filler),
     FezItemData("The Tome Artifact",    1,  ItemClassification.filler),
     FezItemData("Heart Cube",           3,  ItemClassification.filler),
+    FezItemData("Jetpack",              0,  ItemClassification.useful),
 ]
 
 trap_items: List[FezItemData] = [

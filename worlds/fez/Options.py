@@ -79,6 +79,10 @@ class TrapWeights(OptionCounter):
         # "Gravity Trap": 1,
     }
 
+class EnableJetpack(Toggle):
+    """Puts the Jetpack in the useful item pool."""
+    display_name = "Enable Jetpack"
+
 
 @dataclass
 class FezOptions(DeathLinkMixin, PerGameCommonOptions):
@@ -91,6 +95,7 @@ class FezOptions(DeathLinkMixin, PerGameCommonOptions):
     knowledge_logic: KnowledgeLogic
     trap_percentage: TrapPercentage
     trap_weights: TrapWeights
+    enable_jetpack: EnableJetpack
 
 
 fez_option_groups = [
@@ -108,6 +113,7 @@ fez_option_groups = [
     OptionGroup("Misc", [
         ScrambleTetrominos,
         DisableVisualPain,
+        EnableJetpack,
     ]),
 ]
 

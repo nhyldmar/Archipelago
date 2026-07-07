@@ -64,6 +64,11 @@ class FezWorld(World):
             main_items[bit_idx].count = self.options.num_cubes_replace_bits*8
             main_items[cube_idx].count = 32 - self.options.num_cubes_replace_bits
 
+        # Add in a jetpack if the option is enabled
+        if self.options.enable_jetpack:
+            jetpack_idx = [idx for idx, item in enumerate(main_items) if "Jetpack" in item.name][0]
+            main_items[jetpack_idx].count = 1
+
     def create_regions(self) -> None:
         # Add all regions
         for data in all_region_data:
