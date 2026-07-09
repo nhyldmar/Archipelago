@@ -80,7 +80,9 @@ class TrapWeights(OptionCounter):
     }
 
 class EnableJetpack(Toggle):
-    """Puts the Jetpack in the useful item pool."""
+    """Puts the Jetpack in the useful item pool.
+
+    NOTE: Currently the logic does NOT consider the Jetpack, e.g. it can be used to get to the top of Lighthouse without being unlocked or get some anti-cubes without all knowledge checks."""
     display_name = "Enable Jetpack"
 
 
