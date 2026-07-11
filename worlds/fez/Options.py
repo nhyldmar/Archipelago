@@ -79,6 +79,12 @@ class TrapWeights(OptionCounter):
         # "Gravity Trap": 1,
     }
 
+class EnableJetpack(Toggle):
+    """Puts the Jetpack in the useful item pool.
+
+    NOTE: Currently the logic does NOT consider the Jetpack, e.g. it can be used to get to the top of Lighthouse without being unlocked or get some anti-cubes without all knowledge checks."""
+    display_name = "Enable Jetpack"
+
 
 @dataclass
 class FezOptions(DeathLinkMixin, PerGameCommonOptions):
@@ -91,6 +97,7 @@ class FezOptions(DeathLinkMixin, PerGameCommonOptions):
     knowledge_logic: KnowledgeLogic
     trap_percentage: TrapPercentage
     trap_weights: TrapWeights
+    enable_jetpack: EnableJetpack
 
 
 fez_option_groups = [
@@ -108,6 +115,7 @@ fez_option_groups = [
     OptionGroup("Misc", [
         ScrambleTetrominos,
         DisableVisualPain,
+        EnableJetpack,
     ]),
 ]
 
