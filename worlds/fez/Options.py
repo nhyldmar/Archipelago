@@ -85,6 +85,26 @@ class TrapWeights(OptionCounter):
         # "Gravity Trap": 1,
     }
 
+class EnableJetpack(Choice):
+    """Puts the Jetpack ability in the item pool. The jetpack is a secret New Game+ mechanic that can be accessed by
+    entering Up Up Up Up Jump and then holding jump.
+
+    Disabled: There is no jetpack in the item pool.
+
+    Enabled: A jetpack is in the pool, but is never a required item. When used in combination with other requirements
+    (e.g. knowledge logic, ability randomizer), it may be possible to use the jetpack to bypass the logic.
+
+    Enabled With Logic: A jetpack is in the pool and it is factored into the logic. Getting the jetpack may be required
+    to access some areas.
+
+    NOTE: Regardless of the chosen setting, the jetpack CANNOT be used to bypass the Lighthouse locked door.
+    """
+    display_name = "Enable Jetpack"
+    option_disabled = 0
+    option_enabled = 1
+    option_enabled_with_logic = 2
+    default = 0
+
 
 @dataclass
 class FezOptions(DeathLinkMixin, PerGameCommonOptions):
@@ -98,6 +118,7 @@ class FezOptions(DeathLinkMixin, PerGameCommonOptions):
     knowledge_logic: KnowledgeLogic
     trap_percentage: TrapPercentage
     trap_weights: TrapWeights
+    enable_jetpack: EnableJetpack
 
 
 fez_option_groups = [
@@ -116,6 +137,7 @@ fez_option_groups = [
     OptionGroup("Misc", [
         ScrambleTetrominos,
         DisableVisualPain,
+        EnableJetpack,
     ]),
 ]
 

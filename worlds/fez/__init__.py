@@ -1,5 +1,5 @@
 from typing import Any, Dict
-from .Options import FezOptions, fez_option_groups, fez_option_presets
+from .Options import FezOptions, fez_option_groups, fez_option_presets, EnableJetpack
 from .Items import FezItem, all_item_data, item_name_groups, filler_items, main_items, knowledge_items, trap_items
 from .Locations import FezLocation, all_location_data, location_name_groups
 from .Regions import all_region_data, region_name_to_location_name
@@ -102,6 +102,12 @@ class FezWorld(World):
             for idx in ability_idx:
                 main_items_player[idx].count = 0
 
+        # Add in a jetpack if the option is enabled
+        if self.options.enable_jetpack != EnableJetpack.option_disabled:
+            jetpack_idx = [idx for idx, item in enumerate(main_items_player) if "Jetpack" in item.name][0]
+            main_items_player[jetpack_idx].count = 1
+            if self.options.enable_jetpack == EnableJetpack.option_enabled_with_logic:
+                main_items_player[jetpack_idx].classification = ItemClassification.progression
 
         # Account for removed clock anti locations if not shuffling
         clock_tower_filler_cnt = 0
