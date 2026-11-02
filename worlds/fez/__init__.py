@@ -56,7 +56,23 @@ class FezWorld(World):
     location_names = list(location_name_to_id)
     location_name_groups = location_name_groups
 
+    # Enable Universal Tracker yaml-less support
+    ut_can_gen_without_yaml = True
+
 # start of ordered Main.py calls
+
+    def generate_early(self) -> None:
+        # Implement Universal Tracker yaml-less support
+        if hasattr(self.multiworld, "generation_is_fake"):
+            if hasattr(self.multiworld, "re_gen_passthrough"):
+                if "Fez" in self.multiworld.re_gen_passthrough:
+                    slot_data = self.multiworld.re_gen_passthrough["Fez"]
+                    self.options.goal.value = slot_data["goal"]
+                    self.options.shuffle_clock_antis.value = slot_data["shuffle_clock_antis"]
+                    self.options.randomize_abilities.value = slot_data["randomize_abilities"]
+                    self.options.scramble_tetrominos.value = slot_data["scramble_tetrominos"]
+                    self.options.knowledge_logic.value = slot_data["knowledge_logic"]
+            return
 
     def create_regions(self) -> None:
         # Add all regions
